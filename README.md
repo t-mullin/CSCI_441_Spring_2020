@@ -82,10 +82,10 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 | 1/14 |  Intro - applications of computer graphics                         | [Lab 0](./labs/lab0/) |                       | FoCG Chapter 1                                |
 | 1/16 |  C++                                                               |                       |                       |                                               |
 |      |                                                                    |                       |                       |                                               |
-| 1/21 |                                                                    |  Lab 1                | [Lab 0](./labs/lab0/) |                                               |
+| 1/21 |                                                                    | [Lab 1](./labs/lab1/) | [Lab 0](./labs/lab0/) |                                               |
 | 1/23 |                                                                    |                       |                       |                                               |
 |      |                                                                    |                       |                       |                                               |
-| 1/28 |                                                                    |  Lab 2                |  Lab 1                |                                               |
+| 1/28 |                                                                    |  Lab 2                | [Lab 1](./labs/lab1/) |                                               |
 | 1/30 |                                                                    |                       |                       |                                               |
 
 ### February
