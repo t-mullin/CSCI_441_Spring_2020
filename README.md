@@ -40,7 +40,7 @@ David L. Millman, Ph.D.
 
 **Email**: david.millman@montana.edu
 
-**Office hours**: Tue 14:00 - 14:50, Thurs 17:45 - 18:35, and by appointment
+**Office hours**: Tue 12:00 - 12:50, Thurs 17:45 - 18:35, and by appointment
 
 **Bitbucket username**: david_millman
 
