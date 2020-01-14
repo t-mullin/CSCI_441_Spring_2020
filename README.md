@@ -32,7 +32,7 @@ https://bitbucket.org/msu-cs/csci-441-spring2020
 
 ## Meeting Times
 
-Tuesdays and Thursdays 15:30 - 17:45 in Reid Hall 202.
+Tuesdays and Thursdays 16:30 - 17:45 in Reid Hall 202.
 
 ## Instructor
 
