@@ -1,5 +1,9 @@
 # Lab 0 - Up and running with C++
 
+*You should work individually on this assignment. To receive credit, demonstrate
+your completed program during lab or push your code up to Bitbucket prior to
+class on the due date.*
+
 For the most part you've all been using Java in your programming classes. You
 should also have been exposed to a little bit of C. In CSCI 441 you'll be using
 C++.  This lab aims to familiarize you with some features of C++ that are
