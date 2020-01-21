@@ -48,9 +48,10 @@ David L. Millman, Ph.D.
 
 TBA
 
-**Email**: TBA
+**Email**: a.liyanaralalage@student.montana.edu
 
-**Bitbucket username**: TBA
+**Bitbucket username**: adiesha
+**Bitbucket email**: adiesha@gmail.com
 
 ## Textbook
 
