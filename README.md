@@ -44,6 +44,8 @@ David L. Millman, Ph.D.
 
 **Bitbucket username**: david_millman
 
+**Bitbucket email**: dmillman@gmail.com
+
 ## Grader
 
 TBA
