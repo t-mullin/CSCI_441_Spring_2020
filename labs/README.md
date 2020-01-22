@@ -14,7 +14,7 @@ able to push changes up to your own personal repository.
 
 When submitting the labs please provide use the following template:
 
-**For your repo url.  Please use the ssh url (the one that ends with `.git`**
+**For your repo url.  Please use the ssh url (the one that ends with `.git`)**
 
     name: <your name>
     collab: <your collaborators>
