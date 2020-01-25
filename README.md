@@ -52,6 +52,8 @@ Adiesha Liyanaralalage
 
 **Email**: a.liyanaralalage@student.montana.edu
 
+**Office hours**: Monday 10.00 - 11.00 BARH 259
+
 **Bitbucket username**: adiesha
 
 **Bitbucket email**: adiesha@gmail.com
