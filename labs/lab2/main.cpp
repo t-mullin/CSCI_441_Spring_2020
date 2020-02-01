@@ -1,3 +1,9 @@
+// Created by Tristan on 1/28/2020.
+// CSCI 441 Spring 2020
+// David Millman
+// 2/4/2020
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -122,8 +128,8 @@ GLuint createShader(const std::string& fileName, GLenum shaderType) {
     } else {
         shader = glCreateShader(GL_FRAGMENT_SHADER);
     }
-    glShaderSource(shader, 1, &src_ptr, NULL);
-    glCompileShader(shader);
+    glShaderSource(shader, 1, &src_ptr, NULL);  
+    glCompileShader(shader);    //complies the shader
     /** END CODE HERE */
 
     // Perform some simple error handling on the shader
@@ -144,7 +150,9 @@ GLuint createShaderProgram(GLuint vertexShader, GLuint fragmentShader) {
     /** YOU WILL ADD CODE STARTING HERE */
     // create the program using glCreateProgram, glAttachShader, glLinkProgram
     GLuint program = 0;
+    //creates a new program
     program = glCreateProgram();
+    //attaches the vertex and fragment shaders to the shader program
     glAttachShader(program, vertexShader);
     glAttachShader(program, fragmentShader);
     glLinkProgram(program);
@@ -183,7 +191,7 @@ int main(void) {
     // convert the triangle to an array of floats containing
     // normalized device coordinates and color components.
     // float triangle[] = ...
-    Vector5* v_array = new Vector5[3];  //
+    Vector5* v_array = new Vector5[3];  //new Vector5 objects to hold x,y,r,g and b values
     std::cout << "Enter 3 points (enter a point as x,y:r,g,b):" << std::endl;
     for (int i = 0; i < 3; i++) {
         std::cin >> v_array[i].x >> v_array[i].y >> v_array[i].r >> v_array[i].g >> v_array[i].b;
