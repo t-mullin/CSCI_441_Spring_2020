@@ -1,3 +1,8 @@
+// Created by Tristan on 2/8/2020.
+// CSCI 441 Spring 2020
+// David Millman
+// 2/11/2020
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -5,8 +10,10 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
 #include <csci441/shader.h>
+
+#include "cmath"
+#include "matrix3.h"
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -15,6 +22,15 @@ void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
 void processInput(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
+    }
+}
+
+int keypressCounter = 0;
+//call back on keypress event
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    //checks if the space key was released
+    if(key == GLFW_KEY_SPACE && action == GLFW_RELEASE) {
+        keypressCounter++;
     }
 }
 
@@ -97,7 +113,47 @@ int main(void) {
         shader.use();
 
         /** Part 2 animate and scene by updating the transformation matrix */
+        glfwSetKeyCallback(window, keyCallback);    //waits for key press
+        float time = glfwGetTime(); //gets the current time as a float
 
+        Matrix3 matrix;
+        Matrix3 matrixR;
+        Matrix3 matrixS;
+        Matrix3 matrixT;
+        //arrays with the rotation layouts
+        float rotateZ[9] ={cosf(time), -sinf(time), 0.0f, sinf(time), cosf(time), 0.0f, 0.0f, 0.0f, 1.0f};  //change the first 2 values in the row to change the rotation axis;
+        float rotateY[9] ={cosf(time), -sinf(time), 0.0f, 0.0f, sinf(time), 0.0f, 0.0f, 0.0f, 1.0f};  //change the first 2 values in the row to change the rotation axis;
+        float rota[9] ={cosf(time), -sinf(time), 0.0f, sinf(time), cosf(time), 0.0f, -0.5f, -0.6f, 1.0f};  //change the first 2 values in the row to change the rotation axis;
+
+        //translation needed to be transposed to work in opengl
+        //translation layouts
+        float translation[9] = {1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, cosf(time), sinf(time), 1.0f};
+        float translation2[9] = {1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, -0.6f, 0.5f, 1.0f};
+
+        int vertexLocation = glGetUniformLocation(shader.id(), "transform");
+        //changes the scene depending on the keypress counter
+        switch (keypressCounter) {
+            case 1: //rotate around center
+                matrix = Matrix3(rotateZ);
+                break;
+            case 2: //rotate off center
+                matrix = Matrix3(translation2)*(Matrix3(rota)*(0.5*Matrix3()));
+                break;
+            case 3: //scale
+                matrix = (sinf(time)*Matrix3());
+                break;
+            case 4: //madness
+                matrixR = Matrix3(rotateY);
+                matrixS = cosf(time)*Matrix3();
+                matrixT = Matrix3(translation);
+                matrix = matrixT*(matrixR*matrixS);
+                break;
+            case 5:
+                keypressCounter = 0;
+            default:
+                break;
+        }
+        glUniformMatrix3fv(vertexLocation, 1, GL_FALSE, matrix.a);
         // draw our triangles
         glBindVertexArray(VAO[0]);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(triangle));
