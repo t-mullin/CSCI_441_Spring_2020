@@ -432,8 +432,110 @@ int main(void) {
 
     };
 
+    float cone[] {
+            //first half lower
+            0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(0), 0.0f, 0.5f*cosf(0), 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI/6), 0.0f, 0.5f*cosf(PI/6), 1.0f, 1.0f, 1.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI/6), 0.0f, 0.5f*cosf(PI/6), 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI/3), 0.0f, 0.5f*cosf(PI/3), 1.0f, 1.0f, 1.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(PI/3), 0.0f, 0.5f*cosf(PI/3), 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(PI/2), 0.0f, 0.5f*cosf(PI/2), 1.0f, 0.0f, 0.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(PI/2), 0.0f, 0.5f*cosf(PI/2), 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(2*PI/3), 0.0f, 0.5f*cosf(2*PI/3), 1.0f, 0.0f, 0.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(2*PI/3), 0.0f, 0.5f*cosf(2*PI/3), 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(5*PI/6), 0.0f, 0.5f*cosf(5*PI/6), 1.0f, 1.0f, 1.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(5*PI/6), 0.0f, 0.5f*cosf(5*PI/6), 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI), 0.0f, 0.5f*cosf(PI), 1.0f, 1.0f, 1.0f,
+
+            //second half lower
+            0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(PI), 0.0f, 0.5f*cosf(PI), 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(7*PI/6), 0.0f, 0.5f*cosf(7*PI/6), 1.0f, 0.0f, 0.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(7*PI/6), 0.0f, 0.5f*cosf(7*PI/6), 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(4*PI/3), 0.0f, 0.5f*cosf(4*PI/3), 1.0f, 0.0f, 0.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(4*PI/3), 0.0f, 0.5f*cosf(4*PI/3), 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(3*PI/2), 0.0f, 0.5f*cosf(3*PI/2), 1.0f, 1.0f, 1.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(3*PI/2), 0.0f, 0.5f*cosf(3*PI/2), 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(5*PI/3), 0.0f, 0.5f*cosf(5*PI/3), 1.0f, 1.0f, 1.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(5*PI/3), 0.0f, 0.5f*cosf(5*PI/3), 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(11*PI/6), 0.0f, 0.5f*cosf(11*PI/6), 1.0f, 0.0f, 0.0f,
+
+            0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(11*PI/6), 0.0f, 0.5f*cosf(11*PI/6), 1.0f, 0.0f, 0.0f,
+            0.5f*sinf(2*PI), 0.0f, 0.5f*cosf(2*PI), 1.0f, 0.0f, 0.0f,
+
+            //walls pt 1
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(0), 0.0f, 0.5f*cosf(0), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(PI/6), 0.0f, 0.5f*cosf(PI/6), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI/6), 0.0f, 0.5f*cosf(PI/6), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(PI/3), 0.0f, 0.5f*cosf(PI/3), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI/3), 0.0f, 0.5f*cosf(PI/3), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(PI/2), 0.0f, 0.5f*cosf(PI/2), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI/2), 0.0f, 0.5f*cosf(PI/2), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(2*PI/3), 0.0f, 0.5f*cosf(2*PI/3), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(2*PI/3), 0.0f, 0.5f*cosf(2*PI/3), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(5*PI/6), 0.0f, 0.5f*cosf(5*PI/6), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(5*PI/6), 0.0f, 0.5f*cosf(5*PI/6), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(PI), 0.0f, 0.5f*cosf(PI), 0.0f, 1.0f, 0.0f,
+
+            //walls pt 2
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(PI), 0.0f, 0.5f*cosf(PI), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(7*PI/6), 0.0f, 0.5f*cosf(7*PI/6), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(7*PI/6), 0.0f, 0.5f*cosf(7*PI/6), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(4*PI/3), 0.0f, 0.5f*cosf(4*PI/3), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(4*PI/3), 0.0f, 0.5f*cosf(4*PI/3), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(3*PI/2), 0.0f, 0.5f*cosf(3*PI/2), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(3*PI/2), 0.0f, 0.5f*cosf(3*PI/2), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(5*PI/3), 0.0f, 0.5f*cosf(5*PI/3), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(5*PI/3), 0.0f, 0.5f*cosf(5*PI/3), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(11*PI/6), 0.0f, 0.5f*cosf(11*PI/6), 0.0f, 1.0f, 0.0f,
+
+            0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            0.5f*sinf(11*PI/6), 0.0f, 0.5f*cosf(11*PI/6), 0.0f, 1.0f, 0.0f,
+            0.5f*sinf(2*PI), 0.0f, 0.5f*cosf(2*PI), 0.0f, 1.0f, 0.0f
+    };
+
     // copy vertex data
-    GLuint VBO1, VBO2;
+    GLuint VBO1, VBO2, VBO3;
     glGenBuffers(1, &VBO1);
     glBindBuffer(GL_ARRAY_BUFFER, VBO1);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -455,6 +557,19 @@ int main(void) {
     GLuint VAO2;
     glGenVertexArrays(1, &VAO2);
     glBindVertexArray(VAO2);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)(3*sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    //VBO and VAO for the cone
+    glGenBuffers(1, &VBO3);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO3);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(cone), cone, GL_STATIC_DRAW);
+
+    GLuint VAO3;
+    glGenVertexArrays(1, &VAO3);
+    glBindVertexArray(VAO3);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)(3*sizeof(float)));
@@ -540,6 +655,11 @@ int main(void) {
                 // render the cylinder
                 glBindVertexArray(VAO2);
                 glDrawArrays(GL_TRIANGLES, 0, sizeof(cylinder));
+                break;
+            case 2:
+                // render the cone
+                glBindVertexArray(VAO3);
+                glDrawArrays(GL_TRIANGLES, 0, sizeof(cone));
                 break;
             default:
                 swapPrimitives = 0;
