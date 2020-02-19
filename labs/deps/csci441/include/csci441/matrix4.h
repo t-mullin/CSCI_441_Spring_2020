@@ -137,6 +137,14 @@ public:
         return ret;
     }
 
+    Vector4 operator*(const Vector4& v) const {
+        Vector4 ret;
+        for (int i = 0; i < 4; ++i) {
+            ret.values[i] = dot(values, i, v.values, 0);
+        }
+        return ret;
+    }
+
     std::string to_string()  const {
         std::ostringstream os;
         for (int row = 0; row < 4; ++row) {
