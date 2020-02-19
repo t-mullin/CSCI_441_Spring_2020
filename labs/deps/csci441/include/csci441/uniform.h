@@ -19,7 +19,7 @@ public:
 
     static void set(GLuint shader, const std::string &name, const Vector4& v) {
         GLuint loc = location(shader, name);
-        glUniform4f(loc, v.x(), v.y(), v.z(), v.w());
+        glUniform3f(loc, v.x(), v.y(), v.z());
     }
 
     static void set(GLuint shader, const std::string &name, const int v) {
