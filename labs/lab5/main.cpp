@@ -1,3 +1,14 @@
+// Created by Tristan on 2/22/2020.
+// CSCI 441 Spring 2020
+// David Millman
+// 2/25/2020
+
+/*
+ * Majority of the code was provided by David Millman.
+ * Fragment shader was laid out by following the Basic Lighting Tutorial
+ * from https://learnopengl.com/Lighting/Basic-Lighting
+ */
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -27,6 +38,15 @@ bool isPressed(GLFWwindow *window, int key) {
 
 bool isReleased(GLFWwindow *window, int key) {
     return glfwGetKey(window, key) == GLFW_RELEASE;
+}
+
+int keypressCounter = 0;
+//call back on keypress event
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    //checks if the space key was released
+    if(key == GLFW_KEY_SPACE && action == GLFW_RELEASE) {
+        keypressCounter++;
+    }
 }
 
 Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
@@ -104,28 +124,45 @@ int main(void) {
 
     // create c
     // Cylinder c(20, 1, .2, .4);
-    // Cone c(20, 1, .2, .4);
+    Cone cone(20, 1, .2, .4);
     // Sphere c(20, .5, 1, .2, .4);
     // Torus c(20, .75, .25, 1, .2, .4);
     DiscoCube c;
 
     // copy vertex data
-    GLuint VBO1;
+    GLuint VBO1, VBO2;
+    //cube
     glGenBuffers(1, &VBO1);
     glBindBuffer(GL_ARRAY_BUFFER, VBO1);
-    glBufferData(GL_ARRAY_BUFFER, c.coords.size()*sizeof(float),
-            &c.coords[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, c.coords.size()*sizeof(float), &c.coords[0], GL_STATIC_DRAW);
 
     // describe vertex layout
+    //cube
     GLuint VAO1;
     glGenVertexArrays(1, &VAO1);
     glBindVertexArray(VAO1);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float),
-            (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9*sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float),
-            (void*)(3*sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9*sizeof(float), (void*)(3*sizeof(float)));
     glEnableVertexAttribArray(1);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(float), (void*)(6*sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+    //cone
+    glGenBuffers(1, &VBO2);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO2);
+    glBufferData(GL_ARRAY_BUFFER, cone.coords.size()*sizeof(float), &cone.coords[0], GL_STATIC_DRAW);
+
+    //cone
+    GLuint VAO2;
+    glGenVertexArrays(1, &VAO2);
+    glBindVertexArray(VAO2);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9*sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9*sizeof(float), (void*)(3*sizeof(float)));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(float), (void*)(6*sizeof(float)));
+    glEnableVertexAttribArray(2);
 
     // setup projection
     Matrix4 projection;
@@ -138,6 +175,11 @@ int main(void) {
 
     Matrix4 camera;
     camera.look_at(eye, origin, up);
+
+    //Light
+    Vector4 light(0, 5.0, 5.0); //Position
+    Vector4 lightColor(1.0f, 0.0f, 0.0f); //Color
+    float lightIntensity = 1.0f; //Intensity
 
     // create the shaders
     Shader shader("../vert.glsl", "../frag.glsl");
@@ -155,9 +197,9 @@ int main(void) {
     while (!glfwWindowShouldClose(window)) {
         // process input
         processInput(model, window);
-
+        glfwSetKeyCallback(window, keyCallback);    //waits for key press
         /* Render here */
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.2f, 0.6f, 0.7f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // activate shader
@@ -167,9 +209,26 @@ int main(void) {
         Uniform::set(shader.id(), "projection", projection);
         Uniform::set(shader.id(), "camera", camera);
 
+        //Uniforms for lighting
+        Uniform::set(shader.id(), "lightSource", light);
+        Uniform::set(shader.id(), "lightColor", lightColor);
+        Uniform::set(shader.id(), "lightIntensity", lightIntensity);
+        Uniform::set(shader.id(), "eye", eye);
+
         // render the cube
-        glBindVertexArray(VAO1);
-        glDrawArrays(GL_TRIANGLES, 0, c.coords.size()*sizeof(float));
+        switch(keypressCounter) {
+            case 0: //Cube
+                glBindVertexArray(VAO1);
+                glDrawArrays(GL_TRIANGLES, 0, c.coords.size()*sizeof(float));
+                break;
+            case 1: //Cone
+                glBindVertexArray(VAO2);
+                glDrawArrays(GL_TRIANGLES, 0, cone.coords.size()*sizeof(float));
+                break;
+            default:
+                keypressCounter = 0;
+                break;
+        }
 
         /* Swap front and back and poll for io events */
         glfwSwapBuffers(window);
