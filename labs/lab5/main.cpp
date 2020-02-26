@@ -178,7 +178,7 @@ int main(void) {
 
     //Light
     Vector4 light(0, 5.0, 5.0); //Position
-    Vector4 lightColor(1.0f, 0.0f, 0.0f); //Color
+    Vector4 lightColor(1.0f, 1.0f, 1.0f); //Color
     float lightIntensity = 1.0f; //Intensity
 
     // create the shaders
