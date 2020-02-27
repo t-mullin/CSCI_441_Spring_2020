@@ -136,7 +136,7 @@ int main(void) {
     Renderer renderer;
 
     // set the light position
-    Vctor4 lightPos(3.75f, 3.75f, 4.0f);
+    Vector4 lightPos(3.75f, 3.75f, 4.0f);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
