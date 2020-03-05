@@ -17,6 +17,7 @@
 #include "model.h"
 #include "camera.h"
 #include "renderer.h"
+#include "mesh.h"
 
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 960;
@@ -107,9 +108,11 @@ int main(void) {
 
     // create obj
     Model obj(
-            Torus(40, .75, .5, 1, .2, .4).coords,
+            Torus(10, .75, .5, 1, .2, .4).coords,
             Shader("../vert.glsl", "../frag.glsl"));
 
+    Mesh mesh = Mesh(Torus(10, .75, .5, 1, .2, .4).coords);
+    
     // make a floor
     Model floor(
             DiscoCube().coords,
