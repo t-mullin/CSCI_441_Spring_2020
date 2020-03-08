@@ -1,3 +1,8 @@
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 3/10/2020
+
 #include <iostream>
 #include <string>
 #include <sstream>
