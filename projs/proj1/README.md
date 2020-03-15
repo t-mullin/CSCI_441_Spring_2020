@@ -2,7 +2,7 @@
 
 *You may work individually or in groups of up to four on this assignment.
 To receive credit, demonstrate your
-completed program over video conference or create a tag called `prog01`
+completed program over video conference or create a tag called `proj01`
 push your code (and tag) up to Bitbucket and submit the hash to D2L prior to
 class on the due date.*
 
@@ -48,7 +48,7 @@ mazes in obj format as well).
 
 ## Required Materials
 
-Your program2 directory must include:
+Your proj1 directory must include:
 
 * All source code for the completed program.
 * A screenshot of your program  in camera view and in birds eye view.
