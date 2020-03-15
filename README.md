@@ -107,44 +107,44 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 | 2/18 | [Basic Shading](./notes/02-18.pdf)                                 | [Lab 5](./labs/lab5)  | [Lab 4](./labs/lab4)  | LoGL Ch 10                                    |
 | 2/20 | [Phong Shading](./notes/02-20.pdf)                                 |                       |                       | LoGL Ch 10                                    |
 |      |                                                                    |                       |                       |                                               |
-| 2/25 |  Triangulation Data Structs                                        | [Lab 6](./labs/lab6)  | [Lab 5](./labs/lab5)  | LoGL Ch 12                                    |
-| 2/27 |  Texture Mapping                                                   |                       |                       | LoGL Ch 11                                    |
+| 2/25 | [Triangulation Data Structs](./notes/02-25.pdf)                    | [Lab 6](./labs/lab6)  | [Lab 5](./labs/lab5)  | LoGL Ch 12                                    |
+| 2/27 | [Texture Mapping](./notes/02-27.pdf)                               |                       |                       | LoGL Ch 11                                    |
 
 ### March
 
-| Date | Description                                                        | Assigned              | Due                   | Recommended Reading                           |
-|------|--------------------------------------------------------------------|-----------------------|-----------------------|-----------------------------------------------|
-| 3/03 |  Texture Mapping                                                   | [Lab 7](./labs/lab7)  | [Lab 6](./labs/lab6)  | LoGL Ch 11                                    |
-| 3/05 |                                                                    |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 3/10 |                                                                    |  Proj 1               | [Lab 7](./labs/lab7)  |                                               |
-| 3/12 | Midterm                                                            |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 3/17 | No class (Spring Break)                                            |                       |                       |                                               |
-| 3/19 | No class (Spring Break)                                            |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 3/24 |                                                                    |                       |                       |                                               |
-| 3/26 | No class (NCUR 2020)                                               |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 3/31 |                                                                    |  Lab 8                |  Proj 1               |                                               |
+| Date | Description                                                        | Assigned                  | Due                   | Recommended Reading                           |
+|------|--------------------------------------------------------------------|---------------------------|-----------------------|-----------------------------------------------|
+| 3/03 |  NO CLASS (Dave Sick)                                              | [Lab 7](./labs/lab7)      | [Lab 6](./labs/lab6)  | LoGL Ch 11                                    |
+| 3/05 | [Texture Mapping](./notes/03-05.pdf)                               |                           |                       | LoGL Ch 11                                    |
+|      |                                                                    |                           |                       |                                               |
+| 3/10 | Review                                                             |                           | [Lab 7](./labs/lab7)  |                                               |
+| 3/12 | Midterm                                                            |                           |                       |                                               |
+|      |                                                                    |                           |                       |                                               |
+| 3/17 | No class (Spring Break)                                            |                           |                       |                                               |
+| 3/19 | No class (Spring Break)                                            |                           |                       |                                               |
+|      |                                                                    |                           |                       |                                               |
+| 3/24 |                                                                    | [Proj 1](./projs/proj1)   |                       |                                               |
+| 3/26 | No class (~~NCUR 2020~~)                                           |                           |                       |                                               |
+|      |                                                                    |                           |                       |                                               |
+| 3/31 |                                                                    |                           |                       |                                               |
 
 ### April
 
-| Date | Description                                                        | Assigned              | Due                   | Recommended Reading                           |
-|------|--------------------------------------------------------------------|-----------------------|-----------------------|-----------------------------------------------|
-| 4/02 |                                                                    |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 4/07 |                                                                    |  Lab 9                |  Lab 8                |                                               |
-| 4/09 |                                                                    |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 4/14 |                                                                    |  Proj 2               |  Lab 9                |                                               |
-| 4/16 |                                                                    |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 4/21 |                                                                    |                       |                       |                                               |
-| 4/23 |                                                                    |                       |                       |                                               |
-|      |                                                                    |                       |                       |                                               |
-| 4/28 |                                                                    |                       |                       |                                               |
-| 4/30 |                                                                    |                       |  Proj 2               |                                               |
+| Date | Description                                                        | Assigned              | Due                       | Recommended Reading                           |
+|------|--------------------------------------------------------------------|-----------------------|---------------------------|-----------------------------------------------|
+| 4/02 |                                                                    |                       |                           |                                               |
+|      |                                                                    |                       |                           |                                               |
+| 4/07 |                                                                    |  Lab 8                | [Proj 1](./projs/proj1)   |                                               |
+| 4/09 |                                                                    |                       |                           |                                               |
+|      |                                                                    |                       |                           |                                               |
+| 4/14 |                                                                    |  Lab 9                |  Lab 8                    |                                               |
+| 4/16 |                                                                    |                       |                           |                                               |
+|      |                                                                    |                       |                           |                                               |
+| 4/21 |                                                                    |  Proj 2               |  Lab 9                    |                                               |
+| 4/23 |                                                                    |                       |                           |                                               |
+|      |                                                                    |                       |                           |                                               |
+| 4/28 |                                                                    |                       |                           |                                               |
+| 4/30 |                                                                    |                       |  Proj 2                   |                                               |
 
 ### May
 
@@ -156,7 +156,6 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 
 Below are the topics that may be covered in the future:
 
-- Texture mapping
 - Ray Tracing
 - Quaternions
 - Spatial Data Structure
