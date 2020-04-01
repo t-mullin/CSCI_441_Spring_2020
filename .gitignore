@@ -44,3 +44,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 build*
+
+# Clion
+.idea
+cmake-build-debug
