@@ -1,6 +1,7 @@
-//
-// Created by Tristan on 3/27/2020.
-//
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 4/7/2020
 
 #ifndef PROJ1_RENDERER_H
 #define PROJ1_RENDERER_H

@@ -1,7 +1,7 @@
 // Created by Tristan Mullin.
 // CSCI 441 Spring 2020
 // David Millman
-// 3/10/2020
+// 4/7/2020
 
 #include <iostream>
 #include <string>
@@ -26,6 +26,7 @@
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 960;
 bool birdeye = false;
+bool rotationLock = false;
 float Rot = 0.0f;
 float RotY = 0.0f;
 
@@ -54,9 +55,21 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
         } else if(isPressed(window, GLFW_KEY_S)) {
             trans=translate(0,0,-TRANS);
         } else if(isPressed(window, GLFW_KEY_A)) {
-            trans=translate(-TRANS, 0, 0);
+            if(!rotationLock) {
+                trans=rotate_y(-90);//*translate(-TRANS, 0, 0);
+                Rot -= 90;
+                rotationLock = true;
+            }
         } else if(isPressed(window, GLFW_KEY_D)) {
-            trans=translate(TRANS, 0, 0);
+            if(!rotationLock) {
+                trans=rotate_y(90);//*translate(-TRANS, 0, 0);
+                Rot += 90;
+                rotationLock = true;
+            }
+        }
+
+        if(isReleased(window, GLFW_KEY_A) && isReleased(window, GLFW_KEY_D) ) {
+            rotationLock = false;
         }
     } else {
         if (isPressed(window, GLFW_KEY_W)) {
@@ -163,14 +176,13 @@ int main(void) {
     camera.perspective = perspective(SCREEN_WIDTH, SCREEN_HEIGHT, 90, .01, 10);;
     camera.orthogonal = orthographic(-5.0f, 5.0f, -5.0f, 5.0f, 2.0f, -100.0f);;
 
-    Model maze = Model("../models/testMaze.obj", "../textures/Hedge512.png", 0,Shader("../shaders/mazeVert.glsl", "../shaders/mazeFrag.glsl"),true, true);
+    Model maze = Model("../models/testMaze.obj", "../textures/Hedge1280_1.png", 0,Shader("../shaders/mazeVert.glsl", "../shaders/mazeFrag.glsl"),true, true);
     Model ground = Model("../models/ground.obj",  "../textures/Path512.png", 1,Shader("../shaders/groundVert.glsl", "../shaders/groundFrag.glsl"), true, true);
     Model dino = Model("../models/dino.obj",  "../textures/Path512.png", 2,Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
     Model duck = Model("../models/duck.obj",  "../textures/Path512.png", 3,Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
 
     Vector4 dinoPos;
     Vector4 camPos;
-    Vector4 temp;
 
     //placing the duck
     Matrix4 trans;
@@ -219,7 +231,6 @@ int main(void) {
         } else {
             dinoPos = Vector4(dino.model.values[12], dino.model.values[13], dino.model.values[14]);
             camPos = -0.35*rotate_y(Rot, Vector4(1, 0, 1, 0)) + (0.3*rotate_z(RotY, Vector4(0, 1, 0, 0)));
-            //camPos.values[1] = 0.3f;
             camera.eye = dinoPos+camPos;
             camera.origin = dinoPos;
             camera.up = Vector4(0, 1, 0);

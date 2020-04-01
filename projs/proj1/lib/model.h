@@ -1,6 +1,7 @@
-//
-// Created by Tristan on 3/23/2020.
-//
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 4/7/2020
 
 #ifndef PROJ1_MODEL_H
 #define PROJ1_MODEL_H
@@ -22,7 +23,7 @@
 #include "matrix4.h"
 #include "camera.h"
 
-#define LINE_SIZE 2
+#define LINE_SIZE 256
 
 struct ModelVertex {
     float position[3];
@@ -54,6 +55,14 @@ public:
         setupVAO();
         setupTextures(texturePath);
     }
+
+    Model(const char *modelPath, const Shader& modelShader, bool hasUV, bool hasNormals) : shader(modelShader) {
+        loadOBJ(modelPath, hasUV, hasNormals);
+        setupVAO();
+    }
+
+    ~Model() {}
+
     void setupVAO();
     void setupTextures(const std::string& path);
 private:
@@ -329,9 +338,13 @@ void Model::setupTextures(const std::string& path) {
         GLuint texture = loadTexture(path);
         glBindTexture(GL_TEXTURE_2D, texture);
     } else if(textureIndex == 2) {
-        
+        glActiveTexture(GL_TEXTURE2);
+        GLuint texture = loadTexture(path);
+        glBindTexture(GL_TEXTURE_2D, texture);
     } else if(textureIndex == 3) {
-
+        glActiveTexture(GL_TEXTURE3);
+        GLuint texture = loadTexture(path);
+        glBindTexture(GL_TEXTURE_2D, texture);
     }
 }
 

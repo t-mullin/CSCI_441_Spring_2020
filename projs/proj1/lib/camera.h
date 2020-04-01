@@ -1,6 +1,7 @@
-//
-// Created by Tristan on 3/26/2020.
-//
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 4/7/2020
 
 #ifndef PROJ1_CAMERA_H
 #define PROJ1_CAMERA_H
@@ -30,6 +31,8 @@ public:
         up = u;
         lookAt = Matrix4(eye,origin,up);
     }
+
+    ~Camera() {}
 
     Matrix4 look_at();
 };

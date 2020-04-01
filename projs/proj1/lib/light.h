@@ -1,6 +1,7 @@
-//
-// Created by Tristan on 3/26/2020.
-//
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 4/7/2020
 
 #ifndef PROJ1_LIGHT_H
 #define PROJ1_LIGHT_H
@@ -18,5 +19,7 @@ public:
         lightColor = lightCol;
         lightIntensity = lightInt;
     }
+
+    ~Light() {}
 };
 #endif //PROJ1_LIGHT_H
