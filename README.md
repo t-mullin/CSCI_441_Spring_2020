@@ -123,10 +123,10 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 | 3/17 | No class (Spring Break)                                            |                           |                       |                                               |
 | 3/19 | No class (Spring Break)                                            |                           |                       |                                               |
 |      |                                                                    |                           |                       |                                               |
-| 3/24 |                                                                    | [Proj 1](./projs/proj1)   |                       |                                               |
+| 3/24 | Midterm debrief                                                    | [Proj 1](./projs/proj1)   |                       |                                               |
 | 3/26 | No class (~~NCUR 2020~~)                                           |                           |                       |                                               |
 |      |                                                                    |                           |                       |                                               |
-| 3/31 |                                                                    |                           |                       |                                               |
+| 3/31 | [Intro to Raytracing](./notes/03-31.pdf)                           |                           |                       | LoGL Ch 4                                     |
 
 ### April
 
@@ -156,9 +156,8 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 
 Below are the topics that may be covered in the future:
 
-- Ray Tracing
-- Quaternions
 - Spatial Data Structure
+- ~~Quaternions~~
 
 ## Catalog Information
 
