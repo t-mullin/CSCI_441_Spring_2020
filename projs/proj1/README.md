@@ -1,11 +1,11 @@
-##Maze Exploitation
+## Maze Exploitation
 
 *You may work individually or in groups of up to four on this assignment. To receive credit, 
 demonstrate your completed program over video conference or create a tag called `proj01` 
 push your code (and tag) up to Bitbucket and submit the hash to D2L prior to class on the 
 due date.*
 
-#Summary
+# Summary
 
 Mazes are fun puzzles to solve. Often, when looking at the maze from above, it is easier 
 to solve then when inside the maze. We will use some of the techniques that we have 
@@ -40,7 +40,7 @@ character in camera mode. It can also a lot of fun to trade mazes with your frie
 You can also receive extra credit if you load your mazes from a file. (I would suggest storing 
 your mazes in obj format as well).
 
-#Required Materials
+# Required Materials
 
 Your proj1 directory must include:
 
@@ -48,7 +48,7 @@ Your proj1 directory must include:
 * A screenshot of your program in camera view and in birds eye view.
 * A README.md file with any necessary instructions for using your program.
 
-#Detailed Requirements
+# Detailed Requirements
 
 *Your program must*
 
@@ -72,7 +72,7 @@ Write up what your program does, and how to use it, along with any extra informa
 
 Put effort into your program beyond the minimum requirements. Experiment, put extra features in, organize your code exquisitely, it's really up to you. Explain what you did in your README.md file.
 
-#Point breakdown
+# Point breakdown
 
 | Points | Description
 |--------|---------------------------------------------------------------------------
@@ -86,4 +86,3 @@ Put effort into your program beyond the minimum requirements. Experiment, put ex
 | 10	 | (EC) For rendering a character that is loaded from a file
 | 10	 | (EC) For loading mazes from a file
 | 100	 | Total points w/ 30 possible EC points
-|--------|----------------------------------------------------------------------------
