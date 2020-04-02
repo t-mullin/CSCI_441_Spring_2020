@@ -26,7 +26,6 @@
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 960;
 bool birdeye = false;
-bool rotationLock = false;
 float Rot = 0.0f;
 float RotY = 0.0f;
 
@@ -44,32 +43,28 @@ bool isReleased(GLFWwindow *window, int key) {
 
 Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     Matrix4 trans;
-
     const float ROT = 1;
-    const float SCALE = .05;
     const float TRANS = .01;
 
     if(birdeye) {
         if (isPressed(window, GLFW_KEY_W)) {
-            trans=translate(0,0,TRANS);
+            trans = rotate_y(ROT) * translate(TRANS,0,0) * rotate_y(-ROT);
         } else if(isPressed(window, GLFW_KEY_S)) {
-            trans=translate(0,0,-TRANS);
+            trans = rotate_y(ROT) * translate(-TRANS,0,0) * rotate_y(-ROT);
         } else if(isPressed(window, GLFW_KEY_A)) {
-            if(!rotationLock) {
-                trans=rotate_y(-90);//*translate(-TRANS, 0, 0);
-                Rot -= 90;
-                rotationLock = true;
+            trans=rotate_y(-ROT);
+            if(abs(Rot) == 360.0F) {
+                Rot = 0.0f;
+            } else {
+                Rot--;
             }
         } else if(isPressed(window, GLFW_KEY_D)) {
-            if(!rotationLock) {
-                trans=rotate_y(90);//*translate(-TRANS, 0, 0);
-                Rot += 90;
-                rotationLock = true;
+            trans=rotate_y(ROT);
+            if(abs(Rot) == 360.0F) {
+                Rot = 0.0f;
+            } else {
+                Rot++;
             }
-        }
-
-        if(isReleased(window, GLFW_KEY_A) && isReleased(window, GLFW_KEY_D) ) {
-            rotationLock = false;
         }
     } else {
         if (isPressed(window, GLFW_KEY_W)) {
@@ -125,7 +120,7 @@ void processInput(Matrix4& model, GLFWwindow *window) {
     if (isPressed(window, GLFW_KEY_ESCAPE) || isPressed(window, GLFW_KEY_Q)) {
         glfwSetWindowShouldClose(window, true);
     } else if (isSpaceEvent(window)) {
-        if(birdeye == false) {
+        if(!birdeye) {
             birdeye = true;
         } else {
             birdeye = false;
@@ -176,7 +171,7 @@ int main(void) {
     camera.perspective = perspective(SCREEN_WIDTH, SCREEN_HEIGHT, 90, .01, 10);;
     camera.orthogonal = orthographic(-5.0f, 5.0f, -5.0f, 5.0f, 2.0f, -100.0f);;
 
-    Model maze = Model("../models/testMaze.obj", "../textures/Hedge1280_1.png", 0,Shader("../shaders/mazeVert.glsl", "../shaders/mazeFrag.glsl"),true, true);
+    Model maze = Model("../models/testMaze.obj", "../textures/Hedge512.png", 0,Shader("../shaders/mazeVert.glsl", "../shaders/mazeFrag.glsl"),true, true);
     Model ground = Model("../models/ground.obj",  "../textures/Path512.png", 1,Shader("../shaders/groundVert.glsl", "../shaders/groundFrag.glsl"), true, true);
     Model dino = Model("../models/dino.obj",  "../textures/Path512.png", 2,Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
     Model duck = Model("../models/duck.obj",  "../textures/Path512.png", 3,Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
@@ -201,9 +196,6 @@ int main(void) {
 
     trans = translate(0, 0.01, 0);
     ground.model = trans*ground.model;
-
-    dinoPos = Vector4(dino.model.values[12], dino.model.values[13], dino.model.values[14]);
-    camPos = Vector4(-0.35, +0.3, 0, 0);
 
     //Light
     Light light = Light(Vector4(0, 5.0, 5.0), Vector4(1.0f, 1.0f, 1.0f), 1.0f);

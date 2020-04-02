@@ -145,11 +145,6 @@ void Model::loadOBJ(const char *path, bool hasUV, bool hasNormals) {
 }
 
 void Model::setUV() {
-    std::cout << UV.size() << std::endl;
-    std::cout << vertices.size() << std::endl;
-    std::cout << indices.size() << std::endl;
-    std::cout << uvIndices.size() << std::endl;
-
     for(int i = 0; i < indices.size(); i++) {
         vertices[indices[i]].uv[0] = UV[uvIndices[i]][0];
         vertices[indices[i]].uv[1] = UV[uvIndices[i]][1];
@@ -157,7 +152,6 @@ void Model::setUV() {
 }
 
 void Model::setNormals() {
-    std::cout << normals.size() << std::endl;
     for(int i = 0; i < indices.size(); i++) {
         if(normals.size() == 1) {
             vertices[indices[i]].normal[0] = normals[0][0];
@@ -225,7 +219,6 @@ GLuint Model::createTexture() {
     int position = 0; //keeps track of the current position in the 1D array
     GLuint texture[WIDTH*HEIGHT]; //array to hold texture
 
-
     for(int i = 0; i < HEIGHT; i++) {
         for(int j = 0; j < WIDTH; j++) {
             //checks what row we are on
@@ -250,9 +243,7 @@ GLuint Model::createTexture() {
             }
         }
     }
-    /**
-     * TODO: Part-2 create the checker texture
-     */
+
     //generating the texture
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
@@ -290,9 +281,6 @@ GLuint Model::loadTexture(const std::string& path) {
             case 4: format = GL_RGBA; break;
         }
 
-        /**
-         * TODO: Part-3 create a texture map for an image
-         */
         //generating the texture and mipmap based on image input
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
