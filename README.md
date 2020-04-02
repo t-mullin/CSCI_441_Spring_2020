@@ -112,21 +112,22 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 
 ### March
 
-| Date | Description                                                        | Assigned                  | Due                   | Recommended Reading                           |
-|------|--------------------------------------------------------------------|---------------------------|-----------------------|-----------------------------------------------|
-| 3/03 |  NO CLASS (Dave Sick)                                              | [Lab 7](./labs/lab7)      | [Lab 6](./labs/lab6)  | LoGL Ch 11                                    |
-| 3/05 | [Texture Mapping](./notes/03-05.pdf)                               |                           |                       | LoGL Ch 11                                    |
-|      |                                                                    |                           |                       |                                               |
-| 3/10 | Review                                                             |                           | [Lab 7](./labs/lab7)  |                                               |
-| 3/12 | Midterm                                                            |                           |                       |                                               |
-|      |                                                                    |                           |                       |                                               |
-| 3/17 | No class (Spring Break)                                            |                           |                       |                                               |
-| 3/19 | No class (Spring Break)                                            |                           |                       |                                               |
-|      |                                                                    |                           |                       |                                               |
-| 3/24 |                                                                    | [Proj 1](./projs/proj1)   |                       |                                               |
-| 3/26 | No class (~~NCUR 2020~~)                                           |                           |                       |                                               |
-|      |                                                                    |                           |                       |                                               |
-| 3/31 |                                                                    |                           |                       |                                               |
+| Date | Description                                                        | Assigned                  | Due                   | Recommended Reading                           | Video |
+|------|--------------------------------------------------------------------|---------------------------|-----------------------|-----------------------------------------------|-------|
+| 3/03 |  NO CLASS (Dave Sick)                                              | [Lab 7](./labs/lab7)      | [Lab 6](./labs/lab6)  | LoGL Ch 11                                    | |
+| 3/05 | [Texture Mapping](./notes/03-05.pdf)                               |                           |                       | LoGL Ch 11                                    | |
+|      |                                                                    |                           |                       |                                               | |
+| 3/10 | Review                                                             |                           | [Lab 7](./labs/lab7)  |                                               | |
+| 3/12 | Midterm                                                            |                           |                       |                                               | |
+|      |                                                                    |                           |                       |                                               | |
+| 3/17 | No class (Spring Break)                                            |                           |                       |                                               | |
+| 3/19 | No class (Spring Break)                                            |                           |                       |                                               | |
+|      |                                                                    |                           |                       |                                               | |
+| 3/24 | Midterm debrief                                                    | [Proj 1](./projs/proj1)   |                       |                                               | |
+| 3/26 | No class (~~NCUR 2020~~)                                           |                           |                       |                                               | |
+|      |                                                                    |                           |                       |                                               | |
+| 3/31 | [Intro to Raytracing](./notes/03-31.pdf)                           |                           |                       | LoGL Ch 4                                     | [part 1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/8695c6ccf8e749538c8baa73e21f8ae7) - [part 2](https://montana.webex.com/recordingservice/sites/montana/recording/playback/ca08f4903a4b4341bb7e299d5736756f) - [part 3](https://montana.webex.com/recordingservice/sites/montana/recording/playback/8695c6ccf8e749538c8baa73e21f8ae7) |
+
 
 ### April
 
@@ -156,9 +157,8 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 
 Below are the topics that may be covered in the future:
 
-- Ray Tracing
-- Quaternions
 - Spatial Data Structure
+- ~~Quaternions~~
 
 ## Catalog Information
 
