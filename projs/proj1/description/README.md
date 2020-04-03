@@ -1,34 +1,49 @@
-#Project 1 
+# Project 1 
 
-##Plot
+## Plot
 
 Ben is the ghost of a triceratops and his favorite ghost duck, Ducky, has gotten lost in the hedge 
 maze. Your goal is to guide the Ben to Ducky. 
 
 Ben:
+
 ![Ben](../img/ben.png)
 
 Ducky:
+
 ![Ducky](../img/ducky.png)
+
 ## Controls
 The controls to navigate the maze are as follows:
 
 In Perspective View:
+
 * `w`: moves in the direction the character is facing
-* `s`: move in the opposite direction the character is facing 
+
+* `s`: move in the opposite direction the character is facing
+
 * `a`: rotates the character counter clockwise
+
 * `d`: rotates the character clockwise
+
 * `up arrow`: pans the camera up
+
 * `down arrow`: pans the camera down
+
 * `spacebar`: switches to birds eye view
 
 ![Perspective](../img/perspective.png)
 
 In Birds Eye View:
+
 * `w`: moves in the direction the character is facing
+
 * `s`: move in the opposite direction the character is facing 
+
 * `a`: rotates the character counter clockwise
+
 * `d`: rotates the character clockwise
+
 * `spacebar`: switches to perspective view
 
 ![Birdeye](../img/birdeye.png)
