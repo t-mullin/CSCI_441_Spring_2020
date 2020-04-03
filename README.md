@@ -133,7 +133,7 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 
 | Date | Description                                                        | Assigned              | Due                       | Recommended Reading  | Video |
 |------|--------------------------------------------------------------------|-----------------------|---------------------------|----------------------|-------|
-| 4/02 | [Intersections](./notes/04-02.pdf)                                 |                       |                           | LoGL Ch 4            | [part 1/1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/f6567727ee914ae3a1795a228ee2bea7) |
+| 4/02 | [Intersections](./notes/04-02.pdf)                                 |                       |                           | LoGL Ch 4            | [1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/f6567727ee914ae3a1795a228ee2bea7) of 1 |
 |      |                                                                    |                       |                           |                      |
 | 4/07 |                                                                    |  Lab 8                | [Proj 1](./projs/proj1)   |                      |
 | 4/09 |                                                                    |                       |                           |                      |
