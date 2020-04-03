@@ -6,7 +6,6 @@
 #ifndef PROJ1_RENDERER_H
 #define PROJ1_RENDERER_H
 
-//#include <csci441/matrix3.h>
 #include "camera.h"
 
 class Renderer {

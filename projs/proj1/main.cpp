@@ -14,7 +14,6 @@
 
 #include <csci441/shader.h>
 
-//#include "shape.h"
 #include "lib/model.h"
 #include "lib/light.h"
 #include "lib/matrix4.h"
@@ -194,11 +193,11 @@ int main(void) {
     trans = scale(0.8f);
     dino.model = trans*dino.model;
 
-    trans = translate(0, 0.01, 0);
+    trans = translate(0, 0.005, 0);
     ground.model = trans*ground.model;
 
     //Light
-    Light light = Light(Vector4(0, 5.0, 5.0), Vector4(1.0f, 1.0f, 1.0f), 1.0f);
+    Light light = Light(Vector4(0, 10.0, 0), Vector4(1.0f, 1.0f, 1.0f), 1.0f);
 
     Renderer renderer;
 
