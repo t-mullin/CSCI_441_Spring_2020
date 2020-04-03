@@ -126,7 +126,7 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 | 3/24 | Midterm debrief                                                    | [Proj 1](./projs/proj1)   |                       |                                               | |
 | 3/26 | No class (~~NCUR 2020~~)                                           |                           |                       |                                               | |
 |      |                                                                    |                           |                       |                                               | |
-| 3/31 | [Intro to Raytracing](./notes/03-31.pdf)                           |                           |                       | LoGL Ch 4                                     | [part 1/3](https://montana.webex.com/recordingservice/sites/montana/recording/playback/8695c6ccf8e749538c8baa73e21f8ae7) - [part 2/3](https://montana.webex.com/recordingservice/sites/montana/recording/playback/ca08f4903a4b4341bb7e299d5736756f) - [part 3/3](https://montana.webex.com/recordingservice/sites/montana/recording/playback/8695c6ccf8e749538c8baa73e21f8ae7) |
+| 3/31 | [Intro to Raytracing](./notes/03-31.pdf)                           |                           |                       | LoGL Ch 4                                     | [1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/8695c6ccf8e749538c8baa73e21f8ae7) - [2](https://montana.webex.com/recordingservice/sites/montana/recording/playback/ca08f4903a4b4341bb7e299d5736756f) - [3](https://montana.webex.com/recordingservice/sites/montana/recording/playback/8695c6ccf8e749538c8baa73e21f8ae7) of 3 |
 
 
 ### April
