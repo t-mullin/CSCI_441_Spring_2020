@@ -114,11 +114,11 @@ bool isSpaceEvent(GLFWwindow *window) {
     return trigger;
 }
 
-
 void processInput(Matrix4& model, GLFWwindow *window) {
     if (isPressed(window, GLFW_KEY_ESCAPE) || isPressed(window, GLFW_KEY_Q)) {
         glfwSetWindowShouldClose(window, true);
     } else if (isSpaceEvent(window)) {
+        //toggles perspective
         if(!birdeye) {
             birdeye = true;
         } else {
@@ -167,14 +167,16 @@ int main(void) {
 
     // setup camera
     Camera camera = Camera(Vector4(0, 0, 3), Vector4(0, 0, 0), Vector4(0, 1, 0));
-    camera.perspective = perspective(SCREEN_WIDTH, SCREEN_HEIGHT, 90, .01, 10);;
-    camera.orthogonal = orthographic(-5.0f, 5.0f, -5.0f, 5.0f, 2.0f, -100.0f);;
+    camera.perspective = perspective(SCREEN_WIDTH, SCREEN_HEIGHT, 90, .01, 10);
+    camera.orthogonal = orthographic(-5.0f, 5.0f, -5.0f, 5.0f, 2.0f, -100.0f);
 
+    // setup models
     Model maze = Model("../models/testMaze.obj", "../textures/Hedge512.png", 0,Shader("../shaders/mazeVert.glsl", "../shaders/mazeFrag.glsl"),true, true);
     Model ground = Model("../models/ground.obj",  "../textures/Path512.png", 1,Shader("../shaders/groundVert.glsl", "../shaders/groundFrag.glsl"), true, true);
-    Model dino = Model("../models/dino.obj",  "../textures/Path512.png", 2,Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
-    Model duck = Model("../models/duck.obj",  "../textures/Path512.png", 3,Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
+    Model dino = Model("../models/dino.obj", Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
+    Model duck = Model("../models/duck.obj",Shader("../shaders/vert.glsl", "../shaders/frag.glsl"), false, false);
 
+    //used to update the camera origin and eye
     Vector4 dinoPos;
     Vector4 camPos;
 
@@ -193,6 +195,7 @@ int main(void) {
     trans = scale(0.8f);
     dino.model = trans*dino.model;
 
+    //placing the ground
     trans = translate(0, 0.005, 0);
     ground.model = trans*ground.model;
 

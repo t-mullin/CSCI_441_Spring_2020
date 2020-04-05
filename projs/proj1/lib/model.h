@@ -25,18 +25,22 @@
 
 #define LINE_SIZE 256
 
+//struct to hold vertex info
 struct ModelVertex {
     float position[3];
     float normal[3];
     float uv[2];
 };
 
+//stuct to hold triangle info
 struct Triangle {
     unsigned int TriangleIndices[3];
 };
 
 class Model {
+
 public:
+
     std::vector<ModelVertex> vertices;
     std::vector<Triangle> triangles;
     std::vector<std::vector<float>> UV;
@@ -47,8 +51,9 @@ public:
     int textureIndex;
     Matrix4 model;
     Shader shader;
-    Camera modelCamera;
     GLuint VAO, VBO, EBO;
+
+    //creates a model object with a texture
     Model(const char *modelPath, const std::string& texturePath, int texIndex, const Shader& modelShader, bool hasUV, bool hasNormals) : shader(modelShader) {
         loadOBJ(modelPath, hasUV, hasNormals);
         textureIndex = texIndex;
@@ -56,24 +61,30 @@ public:
         setupTextures(texturePath);
     }
 
+    //creates a model object that does not have a texture
     Model(const char *modelPath, const Shader& modelShader, bool hasUV, bool hasNormals) : shader(modelShader) {
         loadOBJ(modelPath, hasUV, hasNormals);
         setupVAO();
     }
 
+    //Destructor
     ~Model() {}
 
     void setupVAO();
     void setupTextures(const std::string& path);
+
 private:
+
     void loadOBJ(const char *path, bool hasUV, bool hasNormals);
     void setUV();
     void setNormals();
     void calcVertexNorm();
     GLuint createTexture();
     GLuint loadTexture(const std::string& path);
+
 };
 
+//loads and parses an object file
 void Model::loadOBJ(const char *path, bool hasUV, bool hasNormals) {
     FILE *inp = fopen(path, "r");
     if(inp == NULL) {
@@ -144,6 +155,7 @@ void Model::loadOBJ(const char *path, bool hasUV, bool hasNormals) {
     }
 }
 
+//sets the models UV data loaded from obj file
 void Model::setUV() {
     for(int i = 0; i < indices.size(); i++) {
         vertices[indices[i]].uv[0] = UV[uvIndices[i]][0];
@@ -151,6 +163,7 @@ void Model::setUV() {
     }
 }
 
+//sets the models Normal data loaded from obj file
 void Model::setNormals() {
     for(int i = 0; i < indices.size(); i++) {
         if(normals.size() == 1) {
@@ -164,6 +177,7 @@ void Model::setNormals() {
     }
 }
 
+//manually calculates normals based on vertex data
 void Model::calcVertexNorm() {
     for(int i = 0; i < triangles.size(); i++) {
         unsigned int vertIndex1 = triangles.at(i).TriangleIndices[0] - 1;
@@ -211,6 +225,7 @@ void Model::calcVertexNorm() {
     }
 }
 
+//creates checkerboard pattern
 GLuint Model::createTexture() {
     GLuint textureID;
     const int WIDTH = 250; //width of texture
@@ -258,6 +273,7 @@ GLuint Model::createTexture() {
     return textureID;
 }
 
+//loads texture from a image file
 GLuint Model::loadTexture(const std::string& path) {
     bool flip=true;
     GLuint textureID;
@@ -294,6 +310,9 @@ GLuint Model::loadTexture(const std::string& path) {
     return textureID;
 }
 
+//sets up the VBO, EBO, and VAO
+//Used code from https://learnopengl.com/Model-Loading/Mesh to troubleshoot why EBO data
+//was not being loaded correctly. learned that the VAO has to be bound before EBO can be initialized
 void Model::setupVAO() {
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
@@ -316,6 +335,7 @@ void Model::setupVAO() {
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(ModelVertex), (void*)offsetof(ModelVertex, uv));
 }
 
+//loads the texture and binds it to a specific index
 void Model::setupTextures(const std::string& path) {
     if(textureIndex == 0) {
         glActiveTexture(GL_TEXTURE0);

@@ -2,6 +2,9 @@
 // CSCI 441 Spring 2020
 // David Millman
 // 4/7/2020
+/*
+ * Reused and modified the Uniform class provided by David Millman
+ */
 
 #ifndef PROJ1_UNIFORM_H
 #define PROJ1_UNIFORM_H
@@ -10,7 +13,9 @@
 #include "vector4.h"
 
 class Uniform {
+
 public:
+
     static void set(GLuint shader, const std::string &name, const Matrix4& m) {
         GLuint loc = location(shader, name);
         glUniformMatrix4fv(loc, 1, GL_FALSE, m.values);
@@ -36,6 +41,7 @@ private:
     static GLuint location(GLuint shader, const std::string &name) {
         return glGetUniformLocation(shader, name.c_str());
     }
+
 };
 
 

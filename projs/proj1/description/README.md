@@ -1,6 +1,12 @@
-# Project 1 
+# Project 1: 
+This program loads in models from obj files then places them into the 
+world. I created the models for the maze and ground using Blender. 
+The models for the characters were provided for us. I used a pixel art program
+called Aseprite to make the texture for the ground and maze walls. All of the controls 
+are keyboard based. I used the shader files from Lab 7 as a starting point and added
+the needed components to them.
 
-## Plot
+## Plot:
 
 Ben is the ghost of a triceratops and his favorite ghost duck, Ducky, has gotten lost in the hedge 
 maze. Your goal is to guide the Ben to Ducky. 
@@ -13,7 +19,7 @@ Ducky:
 
 ![Ducky](../img/ducky.png)
 
-## Controls
+## Controls:
 The controls to navigate the maze are as follows:
 
 In Perspective View:
@@ -64,3 +70,16 @@ to be a bit stretched.
 
 * [Aseprite Texture Tutorial](https://www.youtube.com/watch?v=6U1WAHwmlc0)
 
+## Final Notes:
+Overall, I'm happy with the current results. I feel like I learned a lot with this
+project. There were some ideas that I do want to implement at a later date like:
+
+* Collision detection
+
+* Simulated day/night cycle
+
+* Flashlight like light source
+
+* Maze difficulty selection
+
+* Mouse camera controls

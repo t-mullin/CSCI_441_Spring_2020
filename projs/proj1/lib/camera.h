@@ -2,6 +2,9 @@
 // CSCI 441 Spring 2020
 // David Millman
 // 4/7/2020
+/*
+ * Reused and modified the Camera class provided by David Millman
+ */
 
 #ifndef PROJ1_CAMERA_H
 #define PROJ1_CAMERA_H
@@ -10,7 +13,9 @@
 #include "vector4.h"
 
 class Camera {
+
 public:
+
     Matrix4 orthogonal;
     Matrix4 perspective;
     Matrix4 lookAt;
@@ -18,6 +23,7 @@ public:
     Vector4 origin;
     Vector4 up;
 
+    //default camera constructor
     Camera() {
         eye = Vector4(0, 0,0);
         origin = Vector4(0, 0,0);
@@ -25,6 +31,7 @@ public:
         lookAt = Matrix4(eye,origin,up);
     }
 
+    //build a camera with specific values for eye, origin, and up vectors
     Camera(Vector4 e, Vector4 o, Vector4 u)  {
         eye = e;
         origin = o;
@@ -32,11 +39,14 @@ public:
         lookAt = Matrix4(eye,origin,up);
     }
 
+    //Destructor
     ~Camera() {}
 
     Matrix4 look_at();
+
 };
 
+//creates a lookAt matrix
 Matrix4 Camera::look_at() {
     Matrix4 camera;
     Matrix4 gazeMat;

@@ -14,10 +14,11 @@
 class Matrix4 {
 
 public:
+
     float values[16];
 
+    //makes an identity matrix
     Matrix4() {
-        //makes an identity matrix
         for(int i = 0; i < 16; i++) {
             if(i == 0 || i == 5 || i == 10 || i == 15) {
                 values[i] = 1.0f;
@@ -34,6 +35,7 @@ public:
         }
     }
 
+    //makes a new a matrix populated with a values from 3 Vector4s
     Matrix4(Vector4 v1, Vector4 v2, Vector4 v3) {
         Vector4 v4 = Vector4(0.0f, 0.0f, 0.0f);
         for(int i = 0; i < 16; i++) {
@@ -48,31 +50,28 @@ public:
             }
         }
     }
+
     //Destructor
     ~Matrix4() {}
 
     Matrix4 transpose(Matrix4 m);
-
     Matrix4 scale(float sx, float sy, float sz);
     Matrix4 scale(float s);
-
     Matrix4 rotate_x(int step);
     Matrix4 rotate_y(int step);
     Matrix4 rotate_z(int step);
-
     Matrix4 translate(float tx, float ty, float tz);
-
     Matrix4 viewport(int width, int height);
     Matrix4 orthographic(float l, float r, float b, float t, float n, float f);
     Matrix4 perspective(float l, float r, float b, float t, float n, float f);
     Matrix4 perspective(int width, int height, float FOV, float n, float f);
-
     //operator overloads
     friend std::ostream& operator<<(std::ostream& stream, const Matrix4& m);
     friend Matrix4 operator*(Matrix4 const m1, Matrix4 const m2);
 
 };
 
+//Transposes the matrix
 Matrix4 transpose(Matrix4 m) {
     Matrix4 tpose;
 
@@ -150,6 +149,7 @@ Matrix4 rotate_z(int step) {
     return transpose(rotZ);
 }
 
+//builds a viewport matrix
 Matrix4 viewport(int width, int height) {
     float widthf = width;
     float heightf = height;
@@ -218,6 +218,7 @@ Matrix4 translate(float tx, float ty, float tz) {
     return transpose(translation);
 }
 
+// * operator overload for matrix multiplication
 Matrix4 operator*(Matrix4 const m1, Matrix4 const m2) {
     float temp[16];
 
@@ -244,6 +245,7 @@ Matrix4 operator*(Matrix4 const m1, Matrix4 const m2) {
     return Matrix4(temp);
 }
 
+// << operator overload for printing out the matrix to the terminal
 std::ostream& operator<<(std::ostream& stream, const Matrix4& m) {
     for (int i = 0; i<16; i++) {
         if (i == 15) {
