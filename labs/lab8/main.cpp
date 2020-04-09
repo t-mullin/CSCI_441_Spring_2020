@@ -1,8 +1,12 @@
+
+
 #include <iostream>
-
 #include <glm/glm.hpp>
-
 #include <bitmap/bitmap_image.hpp>
+#include "lib/ray.h"
+
+const int IMG_WIDTH = 640;
+const int IMG_HEIGHT = 480;
 
 struct Viewport {
     glm::vec2 min;
@@ -27,15 +31,31 @@ struct Sphere {
         }
 };
 
-
 void render(bitmap_image& image, const std::vector<Sphere>& world) {
     // TODO: implement ray tracer
+    const float l = -1.0f;
+    const float r = 1.0f;
+    const float b = -1.0f;
+    const float t = -1.0f;
+
+    float u, v;
+
+    rgb_t bg_color = make_colour(181, 255, 196);
+
+    for(int i = 0; i < IMG_WIDTH; i++) {
+        for(int j = 0; j < IMG_HEIGHT; j++) {
+            u = l + ((r - l)*(i + 0.5))/(float)IMG_WIDTH;
+            v = b + ((t - b)*(j + 0.5))/(float)IMG_HEIGHT;
+
+            image.set_pixel(i, j, bg_color);
+        }
+    }
 }
 
 int main(int argc, char** argv) {
 
     // create an image 640 pixels wide by 480 pixels tall
-    bitmap_image image(640, 480);
+    bitmap_image image(IMG_WIDTH, IMG_HEIGHT);
 
     // build world
     std::vector<Sphere> world = {
@@ -47,7 +67,7 @@ int main(int argc, char** argv) {
     // render the world
     render(image, world);
 
-    image.save_image("ray-traced.bmp");
+    image.save_image("../img/ray-traced.bmp");
     std::cout << "Success" << std::endl;
 }
 

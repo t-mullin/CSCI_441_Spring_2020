@@ -13,7 +13,7 @@ selected objects in 3D.  In this lab we will build a simple ray tracer.  Our ray
 tracer will not have any fancy effects (that comes later), but we will produce
 am image that looks like
 
-![target solution](./img/terget-solution.bmp)
+![target solution](./img/target-solution.bmp)
 
 ## Recommended Reading
 
