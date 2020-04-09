@@ -31,25 +31,33 @@ struct Sphere {
         }
 };
 
+Sphere findIntersection(std::vector<Sphere> objectList) {
+    Sphere hitObj;
+}
+
 void render(bitmap_image& image, const std::vector<Sphere>& world) {
     // TODO: implement ray tracer
-    const float l = -1.0f;
-    const float r = 1.0f;
-    const float b = -1.0f;
-    const float t = -1.0f;
+    Ray ray;
+    float ui;
+    float vj;
 
-    float u, v;
-
+    Viewport viewport = Viewport(glm::vec2(-1, -1), glm::vec2(1, 1));
     rgb_t bg_color = make_colour(181, 255, 196);
 
     for(int i = 0; i < IMG_WIDTH; i++) {
         for(int j = 0; j < IMG_HEIGHT; j++) {
-            u = l + ((r - l)*(i + 0.5))/(float)IMG_WIDTH;
-            v = b + ((t - b)*(j + 0.5))/(float)IMG_HEIGHT;
+            ui = viewport.min.x + (viewport.max.x - viewport.min.x)*(i + 0.5) / IMG_WIDTH;
+            vj = viewport.min.y + (viewport.max.y - viewport.min.y)*(j + 0.5) / IMG_HEIGHT;
+
+            ray.origin = glm::vec3(ui, vj, 0);
+            ray.direction = glm::vec3(0,0,-1);
+
+
 
             image.set_pixel(i, j, bg_color);
         }
     }
+
 }
 
 int main(int argc, char** argv) {
