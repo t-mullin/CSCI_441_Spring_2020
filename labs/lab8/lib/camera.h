@@ -1,6 +1,7 @@
-//
-// Created by Tristan on 4/8/2020.
-//
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 4/14/2020
 
 #ifndef LAB8_CAMERA_H
 #define LAB8_CAMERA_H

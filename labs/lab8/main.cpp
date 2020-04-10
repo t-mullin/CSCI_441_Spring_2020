@@ -1,4 +1,7 @@
-
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 4/14/2020
 
 #include <iostream>
 #include <cmath>
@@ -32,6 +35,9 @@ struct Sphere {
         }
 };
 
+//checks to see if the ray intersects any of the objects in the scene
+//if thee is a hit, set the hitObj to the object id
+//based off Paul Rademacher's notes on traytracing
 int findIntersection(Ray ray, float t_0, float t_1, const std::vector<Sphere>& world) {
     int hitObj = 0;
     glm::vec3 EO;
@@ -65,7 +71,7 @@ void render(bitmap_image& image, const std::vector<Sphere>& world, bool useOrtho
 
     Viewport viewport = Viewport(glm::vec2(-5, -5), glm::vec2(5, 5));
 
-    rgb_t bg_color = make_colour(181, 255, 196);
+    rgb_t bg_color = make_colour(143, 98, 255);
     rgb_t sphere_color;
 
     for(int i = 0; i < IMG_WIDTH; i++) {
@@ -73,16 +79,18 @@ void render(bitmap_image& image, const std::vector<Sphere>& world, bool useOrtho
             ui = viewport.min.x + (viewport.max.x - viewport.min.x)*(i + 0.5) / IMG_WIDTH;
             vj = viewport.min.y + (viewport.max.y - viewport.min.y)*(j + 0.5) / IMG_HEIGHT;
 
+            //checks if using orthographic or perspective projection
             if(useOrtho) {
                 ray.origin = glm::vec3(ui, -vj, 0);
                 ray.direction = glm::vec3(0, 0, -1);
             } else {
-                ray.origin = glm::vec3(0,0, -d);
+                ray.origin = glm::vec3(-2,-1, -d);
                 ray.direction = glm::normalize(glm::vec3(ui, -vj, d));
             }
 
             hit = findIntersection(ray, 0, INFINITY, world);
 
+            //if there was a hit, then set the pixel color to the object color else get the pixel color to the bg color
             if(hit > 0) {
                 sphere_color = make_colour(255*world[hit-1].color.r, 255*world[hit-1].color.g,255*world[hit-1].color.b);
                 image.set_pixel(i, j, sphere_color);
@@ -99,12 +107,15 @@ int main(int argc, char** argv) {
     // create an image 640 pixels wide by 480 pixels tall
     bitmap_image image(IMG_WIDTH, IMG_HEIGHT);
 
-    // build world
+    // build world full of spheres
     std::vector<Sphere> world = {
-        Sphere(glm::vec3(0, 0, 0), 1, glm::vec3(0.3,1,0)),
-        Sphere(glm::vec3(1, 1, 4), 2, glm::vec3(0,1,1)),
-        Sphere(glm::vec3(2, 2, 6), 3, glm::vec3(1,0,1)),
-        Sphere(glm::vec3(-2, 0, 12), 1, glm::vec3(0.2,0.6,1)),
+        Sphere(glm::vec3(0, 0, 0), 1, glm::vec3(13.0/255.0,255.0/255.0,202.0/255.0)),
+        Sphere(glm::vec3(1, -1.5, 3), 2, glm::vec3(240.0/255.0,25.0/255.0,255.0/255.0)),
+        Sphere(glm::vec3(3, 2, 6), 3, glm::vec3(0,255.0/255.0,55.0/255.0)),
+        Sphere(glm::vec3(-2, 0, 12), 1, glm::vec3(255.0/255.0,85.0/255.0,25.0/255.0)),
+        Sphere(glm::vec3(-4, -3, 5), 3, glm::vec3(117.0/255.0,255.0/255.0,13.0/255.0)),
+        Sphere(glm::vec3(5, -5, 7), 2, glm::vec3(13.0/255.0,255.0/255.0,202.0/255.0)),
+        Sphere(glm::vec3(-2.5, 2.5, 3), 1.5, glm::vec3(103.0/255.0,25.0/255.0,255.0/255.0)),
     };
 
     // render the world
