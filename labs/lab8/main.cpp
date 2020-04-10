@@ -1,6 +1,7 @@
 
 
 #include <iostream>
+#include <cmath>
 #include <glm/glm.hpp>
 #include <bitmap/bitmap_image.hpp>
 #include "lib/ray.h"
@@ -31,8 +32,28 @@ struct Sphere {
         }
 };
 
-Sphere findIntersection(std::vector<Sphere> objectList) {
-    Sphere hitObj;
+int findIntersection(Ray ray, float t_0, float t_1, const std::vector<Sphere>& world) {
+    int hitObj = 0;
+    double a = glm::dot(ray.direction, ray.direction);
+    double b = glm::dot(2.0f*ray.direction, ray.origin);
+    double c;
+    double d_2;
+    double solu1;
+    double solu2;
+    //need to shift the points based on the center location of the sphere
+    for(int i = 0; i < world.size(); i++) {
+        c = glm::dot(ray.origin, ray.origin) - powf(world[i].radius,2);
+        d_2 = pow(b, 2) - (4*a*c);
+        if(d_2 < 0) {
+            hitObj = 0;
+        } else if (d_2 == 0) {
+            solu1 = -b/(2*a);
+        } else if (d_2 > 0) {
+            solu1 = (-b + sqrt(d_2))/(2*a);
+            solu2 = (-b - sqrt(d_2))/(2*a);
+        }
+    }
+    return hitObj;
 }
 
 void render(bitmap_image& image, const std::vector<Sphere>& world) {
@@ -40,6 +61,7 @@ void render(bitmap_image& image, const std::vector<Sphere>& world) {
     Ray ray;
     float ui;
     float vj;
+    int hit;
 
     Viewport viewport = Viewport(glm::vec2(-1, -1), glm::vec2(1, 1));
     rgb_t bg_color = make_colour(181, 255, 196);
@@ -52,9 +74,13 @@ void render(bitmap_image& image, const std::vector<Sphere>& world) {
             ray.origin = glm::vec3(ui, vj, 0);
             ray.direction = glm::vec3(0,0,-1);
 
+            hit = findIntersection(ray, 0, INFINITY, world);
 
-
-            image.set_pixel(i, j, bg_color);
+            if(hit > 0) {
+                image.set_pixel(i, j, make_colour(world[hit-1].color.r, world[hit-1].color.g,world[hit-1].color.b));
+            } else {
+                image.set_pixel(i, j, bg_color);
+            }
         }
     }
 
