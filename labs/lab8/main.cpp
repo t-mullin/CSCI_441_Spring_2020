@@ -34,50 +34,58 @@ struct Sphere {
 
 int findIntersection(Ray ray, float t_0, float t_1, const std::vector<Sphere>& world) {
     int hitObj = 0;
-    double a = glm::dot(ray.direction, ray.direction);
-    double b = glm::dot(2.0f*ray.direction, ray.origin);
-    double c;
-    double d_2;
-    double solu1;
-    double solu2;
-    //need to shift the points based on the center location of the sphere
+    glm::vec3 EO;
+    float v;
+    float disk;
+    float d;
+    float t = t_1;
+
     for(int i = 0; i < world.size(); i++) {
-        c = glm::dot(ray.origin, ray.origin) - powf(world[i].radius,2);
-        d_2 = pow(b, 2) - (4*a*c);
-        if(d_2 < 0) {
-            hitObj = 0;
-        } else if (d_2 == 0) {
-            solu1 = -b/(2*a);
-        } else if (d_2 > 0) {
-            solu1 = (-b + sqrt(d_2))/(2*a);
-            solu2 = (-b - sqrt(d_2))/(2*a);
+        EO = world[i].center - ray.origin;
+        v = glm::dot(EO, ray.direction);
+        disk = powf(world[i].radius, 2) - (glm::dot(EO,EO) - powf(v, 2));
+        if(disk >= 0) {
+            d = sqrtf(disk);
+            if(abs(v-d) < t) {
+                t = abs(v - d);
+                hitObj = world[i].id;
+            }
         }
     }
     return hitObj;
 }
 
-void render(bitmap_image& image, const std::vector<Sphere>& world) {
+void render(bitmap_image& image, const std::vector<Sphere>& world, bool useOrtho) {
     // TODO: implement ray tracer
     Ray ray;
     float ui;
     float vj;
+    float d = 9;
     int hit;
 
-    Viewport viewport = Viewport(glm::vec2(-1, -1), glm::vec2(1, 1));
+    Viewport viewport = Viewport(glm::vec2(-5, -5), glm::vec2(5, 5));
+
     rgb_t bg_color = make_colour(181, 255, 196);
+    rgb_t sphere_color;
 
     for(int i = 0; i < IMG_WIDTH; i++) {
         for(int j = 0; j < IMG_HEIGHT; j++) {
             ui = viewport.min.x + (viewport.max.x - viewport.min.x)*(i + 0.5) / IMG_WIDTH;
             vj = viewport.min.y + (viewport.max.y - viewport.min.y)*(j + 0.5) / IMG_HEIGHT;
 
-            ray.origin = glm::vec3(ui, vj, 0);
-            ray.direction = glm::vec3(0,0,-1);
+            if(useOrtho) {
+                ray.origin = glm::vec3(ui, -vj, 0);
+                ray.direction = glm::vec3(0, 0, -1);
+            } else {
+                ray.origin = glm::vec3(0,0, -d);
+                ray.direction = glm::normalize(glm::vec3(ui, -vj, d));
+            }
 
             hit = findIntersection(ray, 0, INFINITY, world);
 
             if(hit > 0) {
-                image.set_pixel(i, j, make_colour(world[hit-1].color.r, world[hit-1].color.g,world[hit-1].color.b));
+                sphere_color = make_colour(255*world[hit-1].color.r, 255*world[hit-1].color.g,255*world[hit-1].color.b);
+                image.set_pixel(i, j, sphere_color);
             } else {
                 image.set_pixel(i, j, bg_color);
             }
@@ -93,15 +101,20 @@ int main(int argc, char** argv) {
 
     // build world
     std::vector<Sphere> world = {
-        Sphere(glm::vec3(0, 0, 1), 1, glm::vec3(1,1,0)),
+        Sphere(glm::vec3(0, 0, 0), 1, glm::vec3(0.3,1,0)),
         Sphere(glm::vec3(1, 1, 4), 2, glm::vec3(0,1,1)),
         Sphere(glm::vec3(2, 2, 6), 3, glm::vec3(1,0,1)),
+        Sphere(glm::vec3(-2, 0, 12), 1, glm::vec3(0.2,0.6,1)),
     };
 
     // render the world
-    render(image, world);
+    render(image, world, true);
+    image.save_image("../img/orthographic.bmp");
 
-    image.save_image("../img/ray-traced.bmp");
+    render(image, world, false);
+    image.save_image("../img/perspective.bmp ");
+
+
     std::cout << "Success" << std::endl;
 }
 

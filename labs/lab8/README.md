@@ -94,7 +94,7 @@ Color the pixel with the color of the sphere identified in the previous step.
 
 If all goes well, you will see an image similar to
 
-![orthographic](./img/orthographic.bmp)
+![orthographic](./img/target-orthographic.bmp)
 
 ## Part 3d - Generate perspective rays
 
