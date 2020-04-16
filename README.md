@@ -145,13 +145,13 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 | 4/23 |                                                                    |                           |                           |                      |
 |      |                                                                    |                           |                           |                      |
 | 4/28 |                                                                    |                           |                           |                      |
-| 4/30 |                                                                    |                           | [Proj 2](./projs/proj2)   |                      |
+| 4/30 |                                                                    |                           |                           |                      |
 
 ### May
 
-| Date | Description                                 |
-|------|---------------------------------------------|
-| 5/06 | Final - 16:00-17:50                         |
+| Date | Description                                                        | Assigned                  | Due                       | Recommended Reading  | Video |
+|------|---------------------------------------------|----------------------|---------------------------|---------------------------|----------------------|-------|
+| 5/06 | Final - 16:00-17:50                         |                      |                           | [Proj 2](./projs/proj2)   |                      |
 
 ### Potential Upcoming topics
 
