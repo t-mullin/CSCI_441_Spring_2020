@@ -183,7 +183,9 @@ At the end of the course, students should be able to
 * Labs 40%
 * Projs 20%
 * Midterm 20%
-* Final 20%
+* ~~Final 20%~~ Due to logistical complexities associated with moving online,
+  instead of a final, the remaining 20% of the grade will be the midterm grade
+  or project grade, whichever is better.
 
 ## Discussion Board
 
