@@ -141,7 +141,7 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 | 4/14 | [Spatial Data Structures](./notes/04-14.pdf)                       | [Lab 9](./labs/lab9)      | [Lab 8](./labs/lab8)      | LoGL Ch 12           | [1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/7b42f22318e24d399d7a42bdcdd70075) of 1 |
 | 4/16 | [Spatial Data STructures](./notes/04-16.pdf)                       |                           |                           | LoGL Ch 12           | [1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/d86c70868015435fbd986473e4334b63) of 1 |
 |      |                                                                    |                           |                           |                      |
-| 4/21 |                                                                    | [Proj 2](./projs/proj2)   | [Lab 9](./labs/lab9)      |                      |
+| 4/21 | [ACM lecture: Ed Catmul & Richard Chuang](https://bit.ly/2zeBAOE)  | [Proj 2](./projs/proj2)   | [Lab 9](./labs/lab9)      |                      |
 | 4/23 |                                                                    |                           |                           |                      |
 |      |                                                                    |                           |                           |                      |
 | 4/28 |                                                                    |                           |                           |                      |
