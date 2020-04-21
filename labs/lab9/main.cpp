@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <cmath>
 
 #include <glm/glm.hpp>
 
@@ -65,11 +66,19 @@ std::vector<Triangle> random_box() {
     return Obj::make_box(glm::vec3(x, y, z), scale, rand_color());
 }
 
+bool boxIntersection(const std::vector<Triangle>& aab, const Ray& ray) {
+    for(int i = 0; i < aab.size(); i++) {
+        if(aab[i].intersect(ray, 0, INFINITY) != INFINITY) {
+            return true;
+        }
+    }
+    return false;
+}
 
 int main(int argc, char** argv) {
 
     // set the number of boxes
-    int NUM_BOXES = 10;
+    int NUM_BOXES = 3;
 
     // create an image 640 pixels wide by 480 pixels tall
     bitmap_image image(640, 480);
