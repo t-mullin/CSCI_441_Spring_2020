@@ -7,14 +7,14 @@
 
 #include <bitmap/bitmap_image.hpp>
 
-#include "camera.h"
-#include "hit.h"
-#include "intersector.h"
-#include "light.h"
-#include "ray.h"
-#include "renderer.h"
-#include "shape.h"
-#include "timer.h"
+#include "lib/camera.h"
+#include "lib/hit.h"
+#include "lib/intersector.h"
+#include "lib/light.h"
+#include "lib/ray.h"
+#include "lib/renderer.h"
+#include "lib/shape.h"
+#include "lib/timer.h"
 
 
 class BruteForceIntersector : public Intersector {
@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
     // see http://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
     // for good attenuation value.
     // I found the values at 7 to be nice looking
-    PointLight l1(glm::vec3(1, 1, 1), glm::vec3(3, -3, 0), 1.0, .7, 0.18);
+    PointLight l1(glm::vec3(1, 1, 1), glm::vec3(0, -3, 0), 1.0, .7, 0.18);
     DirectionalLight l2(glm::vec3(.5, .5, .5), glm::vec3(-5, 4, -1));
     Lights lights = { &l1, &l2 };
 
