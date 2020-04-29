@@ -6,6 +6,7 @@
 #include "light.h"
 #include "ray.h"
 #include "intersector.h"
+#include "shader.h"
 
 class Renderer {
 
@@ -21,53 +22,48 @@ class Renderer {
     }
 
 
-    glm::vec3 phong(const Hit& hit, const Light* light, const glm::vec3& eye, const World& world, const Ray& ray) {
+    glm::vec3 phong(const Hit& hit, const Light* light, const glm::vec3& eye, const World& world) {
 
-        float ambientStrength = 0.2;
-        float specularStrength = 0.5;
-        float shinyness = 2;
+        float ambient_coefficient = 0.2;
+        float diffuse_coefficient = 1.0;
+        float specular_coefficient = 0.5;
+        float shinyness = 2.0;
 
         glm::vec3 pos = hit.position();
-        glm::vec3 normal = hit.normal();
 
-        glm::vec3 light_dir = glm::normalize(light->direction(pos));
+        glm::vec3 normal = hit.normal();    //n
+        glm::vec3 light_dir = glm::normalize(light->direction(pos)); //l
+        glm::vec3 view_dir = glm::normalize(eye - pos); //v
 
-        float ambient = ambientStrength;
+        float ambient = ambient_coefficient;
+        glm::vec3 h = glm::normalize(-light_dir + (-view_dir)); //h
+        float diffuse = diffuse_coefficient * glm::max(glm::dot(normal, light_dir), 0.0f);
+        float specular = specular_coefficient * pow(glm::max(glm::dot(normal, h), 0.0f), shinyness);
 
-        float diffuse = glm::max(glm::dot(normal, light_dir), 0.0f);
-
-        glm::vec3 view_dir = glm::normalize(eye - pos);
-
+        float e = 0.000003;
         Ray shadowRay;
-        shadowRay.origin = pos;
+        shadowRay.origin = e+pos;
         shadowRay.direction = light_dir;
 
         Hit shadowHit = _intersector->find_first_intersection(world, shadowRay);
 
-        glm::vec3 reflectDir;
-
         if(shadowHit.is_intersection()) {
-            reflectDir = glm::normalize(glm::normalize(-light_dir)+glm::normalize(ray.direction));
-        } else {
-            reflectDir = glm::normalize(ray.direction);
+            diffuse = 0.0f;
+            specular = 0.0f;
         }
-        float specular = specularStrength * pow(std::fmax(glm::dot(view_dir, reflectDir), 0.0), shinyness);
 
-        glm::vec3 light_color  =
-            (ambient+diffuse+specular)
-            * light->attenuation(pos)
-            * light->color();
+        glm::vec3 light_color = (ambient+diffuse+specular) * light->attenuation(pos) * light->color();
 
         return light_color*hit.color();
     }
 
 
-    glm::vec3 shade(const Camera& camera, const Lights& lights, const Hit& hit, const World& world, const Ray& ray) {
+    glm::vec3 shade(const Camera& camera, const Lights& lights, const Hit& hit, const World& world) {
         glm::vec3 color = camera.background;
         if (hit.is_intersection()) {
             color = glm::vec3(0,0,0);
             for (auto light : lights) {
-                color += phong(hit, light, camera.pos, world, ray);
+                color += phong(hit, light, camera.pos, world);
             }
         }
         return color;
@@ -81,7 +77,7 @@ class Renderer {
     ) {
 
         Hit hit = _intersector->find_first_intersection(world, ray);
-        return shade(camera, lights, hit, world, ray);
+        return shade(camera, lights, hit, world);
     }
 
 public:

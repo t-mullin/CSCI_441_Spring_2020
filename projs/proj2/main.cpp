@@ -15,6 +15,7 @@
 #include "lib/renderer.h"
 #include "lib/shape.h"
 #include "lib/timer.h"
+#include "lib/shader.h"
 
 
 class BruteForceIntersector : public Intersector {
@@ -103,18 +104,20 @@ int main(int argc, char** argv) {
     // see http://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
     // for good attenuation value.
     // I found the values at 7 to be nice looking
-    PointLight l1(glm::vec3(1, 1, 1), glm::vec3(0, 5, 0), 1.0, .7, 0.18);
+    PointLight l1(glm::vec3(1, 1, 1), glm::vec3(5, 5, 0), 1.0, .7, 0.18);
+    PointLight l3(glm::vec3(1, 1, 1), glm::vec3(-5, 5, 0), 1.0, .7, 0.18);
     DirectionalLight l2(glm::vec3(.5, .5, .5), glm::vec3(0, -4, 0));
-    Lights lights = { &l1, &l2 };
+    Lights lights = { &l1, &l2, &l3 };
 
     // setup world
     World world;
 
     // add the light
-    world.append(Sphere(l1.position(), .25, glm::vec3(1,1,1)));
+    //world.append(Sphere(l1.position(), .25, glm::vec3(1,1,1)));
 
     // and the spheres
     world.append(Sphere(glm::vec3(0, -1, 0), 1, rand_color()));
+    world.append(Sphere(glm::vec3(2, 0, 0), 1, rand_color()));
     world.append(ground_plane());
     //world.append(Sphere(glm::vec3(2, 2, 4), 2, rand_color()));
     //world.append(Sphere(glm::vec3(3, 3, 6), 3, rand_color()));
