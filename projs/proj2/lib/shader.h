@@ -5,8 +5,17 @@
 #ifndef PROJ2_SHADER_H
 #define PROJ2_SHADER_H
 
-class Shader {
+#include <glm/glm.hpp>
 
+class Shader {
+public:
+    glm::vec3 shadow;
+
+
+    glm::vec3 generate_shadows();
 };
+
+
+
 
 #endif //PROJ2_SHADER_H

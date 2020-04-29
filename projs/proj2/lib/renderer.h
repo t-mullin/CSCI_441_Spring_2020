@@ -21,7 +21,7 @@ class Renderer {
     }
 
 
-    glm::vec3 phong(const Hit& hit, const Light* light, const glm::vec3& eye) {
+    glm::vec3 phong(const Hit& hit, const Light* light, const glm::vec3& eye, const World& world, const Ray& ray) {
 
         float ambientStrength = 0.2;
         float specularStrength = 0.5;
@@ -37,9 +37,21 @@ class Renderer {
         float diffuse = glm::max(glm::dot(normal, light_dir), 0.0f);
 
         glm::vec3 view_dir = glm::normalize(eye - pos);
-        glm::vec3 reflectDir = glm::reflect(-light_dir, normal);
-        float specular = specularStrength *
-            pow(std::fmax(glm::dot(view_dir, reflectDir), 0.0), shinyness);
+
+        Ray shadowRay;
+        shadowRay.origin = pos;
+        shadowRay.direction = light_dir;
+
+        Hit shadowHit = _intersector->find_first_intersection(world, shadowRay);
+
+        glm::vec3 reflectDir;
+
+        if(shadowHit.is_intersection()) {
+            reflectDir = glm::normalize(glm::normalize(-light_dir)+glm::normalize(ray.direction));
+        } else {
+            reflectDir = glm::normalize(ray.direction);
+        }
+        float specular = specularStrength * pow(std::fmax(glm::dot(view_dir, reflectDir), 0.0), shinyness);
 
         glm::vec3 light_color  =
             (ambient+diffuse+specular)
@@ -50,12 +62,12 @@ class Renderer {
     }
 
 
-    glm::vec3 shade(const Camera& camera, const Lights& lights, const Hit& hit) {
+    glm::vec3 shade(const Camera& camera, const Lights& lights, const Hit& hit, const World& world, const Ray& ray) {
         glm::vec3 color = camera.background;
         if (hit.is_intersection()) {
             color = glm::vec3(0,0,0);
             for (auto light : lights) {
-                color += phong(hit, light, camera.pos);
+                color += phong(hit, light, camera.pos, world, ray);
             }
         }
         return color;
@@ -69,7 +81,7 @@ class Renderer {
     ) {
 
         Hit hit = _intersector->find_first_intersection(world, ray);
-        return shade(camera, lights, hit);
+        return shade(camera, lights, hit, world, ray);
     }
 
 public:

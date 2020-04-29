@@ -45,6 +45,10 @@ public:
         assert(is_intersection());
         return _shape->color(position());
     }
+
+    Ray getRay() {
+        return _ray;
+    }
 };
 
 

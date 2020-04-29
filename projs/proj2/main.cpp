@@ -75,6 +75,10 @@ bool boxIntersection(const std::vector<Triangle>& aab, const Ray& ray) {
     return false;
 }
 
+std::vector<Triangle> ground_plane() {
+    return Obj::make_box(glm::vec3(0, -7, 0), 10, rand_color());
+}
+
 int main(int argc, char** argv) {
 
     // set the number of boxes
@@ -92,15 +96,15 @@ int main(int argc, char** argv) {
             glm::vec2(-5, -5),                  // viewport min
             glm::vec2(5, 5),                    // viewport max
             dist_to_origin,                     // distance from eye to view plane
-            glm::vec3(.3, .6, .8)               // background color
+            glm::vec3(.3, .4, .8)               // background color
     );
 
     // setup lights
     // see http://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
     // for good attenuation value.
     // I found the values at 7 to be nice looking
-    PointLight l1(glm::vec3(1, 1, 1), glm::vec3(0, -3, 0), 1.0, .7, 0.18);
-    DirectionalLight l2(glm::vec3(.5, .5, .5), glm::vec3(-5, 4, -1));
+    PointLight l1(glm::vec3(1, 1, 1), glm::vec3(0, 5, 0), 1.0, .7, 0.18);
+    DirectionalLight l2(glm::vec3(.5, .5, .5), glm::vec3(0, -4, 0));
     Lights lights = { &l1, &l2 };
 
     // setup world
@@ -110,7 +114,8 @@ int main(int argc, char** argv) {
     world.append(Sphere(l1.position(), .25, glm::vec3(1,1,1)));
 
     // and the spheres
-    world.append(Sphere(glm::vec3(0, 0, 0), 1, rand_color()));
+    world.append(Sphere(glm::vec3(0, -1, 0), 1, rand_color()));
+    world.append(ground_plane());
     //world.append(Sphere(glm::vec3(2, 2, 4), 2, rand_color()));
     //world.append(Sphere(glm::vec3(3, 3, 6), 3, rand_color()));
 
