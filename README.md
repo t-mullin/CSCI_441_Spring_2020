@@ -157,7 +157,6 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 
 Below are the topics that may be covered in the future:
 
-- Spatial Data Structure
 - ~~Quaternions~~
 
 ## Catalog Information
