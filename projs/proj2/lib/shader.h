@@ -1,6 +1,7 @@
-//
-// Created by Tristan on 4/28/2020.
-//
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 5/6/2020
 
 #ifndef PROJ2_SHADER_H
 #define PROJ2_SHADER_H
@@ -13,8 +14,11 @@
 
 
 class Shader {
+    Intersector* intersectors;
 
 public:
+
+    Shader(Intersector* intersector) : intersectors(intersector) {}
 
     glm::vec3 phongShader(const Hit& hit, const Light* light, const glm::vec3 eye, const World& world);
     glm::vec3 shadowShader();
@@ -27,7 +31,7 @@ glm::vec3 phongShader(const Hit &hit, const Light* light, const glm::vec3 eye, c
     float ambient_coefficient = 0.2;
     float diffuse_coefficient = 1.0;
     float specular_coefficient = 0.5;
-    float shinyness = 2.0;
+    float shinyness = 1.0;
 
     glm::vec3 pos = hit.position();
 

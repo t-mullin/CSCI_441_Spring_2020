@@ -1,3 +1,11 @@
+// Created by Tristan Mullin.
+// CSCI 441 Spring 2020
+// David Millman
+// 5/6/2020
+
+//Code provided by David Millman
+//modified make_ray method to accept two additional arguments
+
 #ifndef _CSCI441_CAMERA_H_
 #define _CSCI441_CAMERA_H_
 
@@ -36,14 +44,14 @@ struct Camera {
         v = glm::cross(u, w);
     }
 
-    Ray make_ray(int nx, int ny, int i, int j) const {
+    Ray make_ray(int nx, int ny, int i, int j, double e1, double e2) const {
         float l = viewport_min.x;
         float r = viewport_max.x;
         float b = viewport_min.y;
         float t = viewport_max.y;
 
-        float us = l + (r-l)*(i+.5) / nx;
-        float vs = b + (t-b)*(j+.5) / ny;
+        float us = l + (r-l)*(i+e1) / nx;
+        float vs = b + (t-b)*(j+e2) / ny;
 
         Ray ray;
         ray.origin = pos;
