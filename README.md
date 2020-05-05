@@ -144,8 +144,8 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 | 4/21 | [ACM lecture: Ed Catmul & Richard Chuang](https://bit.ly/2zeBAOE)  | [Proj 2](./projs/proj2)   | [Lab 9](./labs/lab9)      |                      |
 | 4/23 | [Constructive Solid Geometry](./notes/04-23.pdf)                   |                           |                           |                      | [1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/b4b65a961d924cab993515e64dd5304e) of 1 |
 |      |                                                                    |                           |                           |                      |
-| 4/28 |  TopoViz w/ Prof Bei Wang                                          |                           |                           |                      |
-| 4/30 |  Where to go next                                                  |                           |                           |                      |
+| 4/28 |  TopoViz w/ Prof Bei Wang                                          |                           |                           |                      | [1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/0c0e3de85f7e47508d00bb168fd57fcd) of 1 |
+| 4/30 | [Where to go next](./notes/04-30.pdf)                              |                           |                           |                      | [1](https://montana.webex.com/recordingservice/sites/montana/recording/playback/92434439ac4f42fab84e7657a6e7c750) of 1 |
 
 ### May
 
@@ -157,7 +157,6 @@ the current plan. Assignments and due dates will be updated as they're assigned 
 
 Below are the topics that may be covered in the future:
 
-- Spatial Data Structure
 - ~~Quaternions~~
 
 ## Catalog Information
