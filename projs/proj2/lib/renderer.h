@@ -113,7 +113,7 @@ public:
         static std::default_random_engine generator; //generator for the random number generator
         //using a uniform real distribution as it can lay in the range of [0.0, 1.0)
         std::uniform_real_distribution<double> distribution(0.0, 1.0);
-        int numSamples = 8; //sets the number of n samples per pixel
+        int numSamples = 10; //sets the number of n samples per pixel
 
         for (int y = 0; y < image.height(); ++y) {
             for (int x = 0; x < image.width(); ++x) {
